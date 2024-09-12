@@ -11,6 +11,8 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_DB=0
+      - RATE_LIMIT_TIMES=10000
+      - RATE_LIMIT_TIME_UNIT=milliseconds
     volumes:
       - ./logs:/var/log/tinyurl
     networks:
