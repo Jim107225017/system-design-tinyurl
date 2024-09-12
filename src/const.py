@@ -4,4 +4,3 @@ BASE62_ALPHABET = "Lp8sJmOoE5RFtx9NbQdX7nYhGcz0KAaWwIBVCTZrM2Ul4yHPS3fqu6igDvje1
 URL_RELATION_KEY = "url_relation_id"
 URL_EXPIRED_DATE = 30
 TIME_UNIT = 1000    # ms
-RATE_LIMIT_SETUP = {"times": 1, "minutes": 1}

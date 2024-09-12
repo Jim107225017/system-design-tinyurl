@@ -1,14 +1,18 @@
+import os
+
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.orm import Session
 from starlette.status import HTTP_201_CREATED
 
-from src.const import RATE_LIMIT_SETUP
 from src.database.actions import CrudHandler
 from src.database.base import get_db
 from src.framework.schemas import TinyUrlRequest, TinyUrlResponse
 
+RATE_LIMIT_TIMES = int(os.getenv("RATE_LIMIT_TIMES", "1"))
+RATE_LIMIT_TIME_UNIT = os.getenv("RATE_LIMIT_TIME_UNIT", "minutes")
+RATE_LIMIT_SETUP = {"times": RATE_LIMIT_TIMES, RATE_LIMIT_TIME_UNIT: 1}
 router = APIRouter(tags=["tinyurl"], dependencies=[Depends(RateLimiter(**RATE_LIMIT_SETUP))])
 
 
