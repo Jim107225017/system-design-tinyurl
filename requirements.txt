@@ -1,0 +1,7 @@
+fastapi[standard]
+fastapi_limiter
+databases[postgresql]
+psycopg2-binary
+sqlalchemy
+redis==5.0.8
+redis[hiredis]
