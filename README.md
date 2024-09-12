@@ -37,6 +37,8 @@ pip install -r requirements.txt
 - `REDIS_HOST`：Redis 主機地址
 - `REDIS_PORT`：Redis 端口
 - `REDIS_DB`：Redis 數據庫編號
+- `RATE_LIMIT_TIMES`: 速率限制次數 (Default 1)
+- `RATE_LIMIT_TIME_UNIT`: 速率限制次數 (Default minutes, Options: milliseconds | seconds | minutes | hours)
 
 ## 運行
 
