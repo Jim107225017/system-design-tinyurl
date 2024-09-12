@@ -1,0 +1,17 @@
+# python
+**/*.pyc
+
+# pytest
+*.coverage
+**/*.coverage
+.coverage
+htmlcov/
+report.xml
+.pytest_cache
+**/__pycache__
+**/pytest.log
+**/local_identity.py
+**/userconfig.py
+
+# git-repo
+.repo
