@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  app:
+    # build: .
+    image: jim0212/tinyurl:latest
+    ports:
+      - "12996:5050"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/tinyurl
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+    volumes:
+      - ./logs:/var/log/tinyurl
+    networks:
+      - tiny-url-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  db:
+    image: postgres:16.4
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d tinyurl"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tinyurl
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tiny-url-network
+
+  redis:
+    image: redis:7.4.0
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - tiny-url-network
+
+volumes:
+  postgres_data:
+    name: "tiny-url-volume"
+
+networks:
+  tiny-url-network:
+    driver: bridge
