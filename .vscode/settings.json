@@ -1,0 +1,36 @@
+{
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "eeyore.yapf"
+    },
+    "pylint.args": [
+        "--max-line-length=150",
+        "--enable=W0611"
+    ],
+    "python.languageServer": "Default",
+    "python.analysis.extraPaths": [
+        "./chalicelib/squirrel"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "yapf.args": [
+        "--style",
+        "{based_on_style: google, column_limit: 150, spaces_before_comment: 4, split_before_logical_operator: true, indent_width: 4}",
+        "--exclude",
+        "flask_app.py"
+    ],
+    "isort.check": true,
+    "isort.args": [
+        "--profile",
+        "black",
+        "--line-width",
+        "150"
+    ],
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true
+}

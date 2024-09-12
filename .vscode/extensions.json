@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.isort",
+    "ms-python.pylint",
+    "sourcery.sourcery",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "eeyore.yapf",
+  ]
+}
